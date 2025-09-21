@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Setter
 @Getter
@@ -24,5 +25,5 @@ public class ApiLog {
 
     private String responseBody;
 
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 }
