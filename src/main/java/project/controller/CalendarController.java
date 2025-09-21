@@ -8,19 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import project.dto.CheckDayRequest;
 import project.dto.CheckDayResponse;
-import project.service.CalendarService; // <-- ВАЖНО: зависимость от интерфейса!
-import project.service.CalendarServiceImpl;
+import project.service.CalendarService;
 
 @RestController
 @RequestMapping("/api/v1/calendar")
 @RequiredArgsConstructor
 public class CalendarController {
 
-    private final CalendarServiceImpl calendarService;
+    private final CalendarService calendarService;
 
     @PostMapping("/check-day")
     public ResponseEntity<CheckDayResponse> checkDay(@RequestBody CheckDayRequest request) {
-        CheckDayResponse response = calendarService.checkDay(request);
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(calendarService.checkDay(request));
     }
 }

@@ -1,29 +1,26 @@
 package project.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.time.LocalDate;
+import jakarta.persistence.*;
+import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
-@Setter
-@Getter
+@Data
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "api_logs")
 public class ApiLog {
-    @Id
-    private long id;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "request_body", columnDefinition = "TEXT")
     private String requestBody;
 
+    @Column(name = "response_body", columnDefinition = "TEXT")
     private String responseBody;
-
+    
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 }
