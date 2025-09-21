@@ -1,24 +1,22 @@
 package project.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import jakarta.persistence.*;
+import lombok.Data;
+import java.time.LocalDate;
 
+@Data
 @Entity
-@NoArgsConstructor
-@Setter
-@Getter
-@ToString
+@Table(name = "days")
 public class Day {
+
     @Id
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private String date;
+    @Column(name = "date", nullable = false, unique = true)
+    private LocalDate date;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
+    @Column(name = "day_type", nullable = false)
     private DayType dayType;
 }
