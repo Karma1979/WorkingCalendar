@@ -1,16 +1,2 @@
 server:
   port: 8090
-
-spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/working_calendar_db
-    username: postgres
-    password: postgres
-
-  jpa:
-    hibernate:
-      ddl-auto: validate
-
-  liquibase:
-    change-log: classpath:/liquibase/db.changelog.yml
-    enabled: true

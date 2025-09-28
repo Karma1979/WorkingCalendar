@@ -1,4 +1,4 @@
-package project.model;
+package project.entity;
 
 public enum DayType {
     WORKING,
